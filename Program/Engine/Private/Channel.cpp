@@ -1,0 +1,52 @@
+#include "..\Public\Channel.h"
+#include "HierarchyNode.h"
+
+CChannel::CChannel()
+{
+}
+
+void CChannel::Set_TransformationMatrix(_fmatrix TransformationMatrix)
+{
+	//	null이면 저장하면 x
+	if (nullptr == m_pNode)
+		return;
+
+	m_pNode->Set_TransformationMatrix(TransformationMatrix);
+}
+
+void CChannel::Set_HierarchyNodePtr(CHierarchyNode * pNode)
+{
+	m_pNode = pNode;
+
+	Safe_AddRef(m_pNode);
+}
+
+HRESULT CChannel::NativeConstruct(const char* pName)
+{
+	strcpy_s(m_szName, pName);
+
+	return S_OK;
+}
+
+CChannel * CChannel::Create(const char* pName)
+{
+	CChannel*	pInstance = new CChannel();
+
+	if (FAILED(pInstance->NativeConstruct(pName)))
+	{
+		MSGBOX("Failed to Created CChannel");
+		Safe_Release(pInstance);
+	}
+	return pInstance;
+}
+
+void CChannel::Free()
+{
+	for (auto& pKeyFrame : m_KeyFrames)
+		Safe_Delete(pKeyFrame);
+
+	m_KeyFrames.clear();
+
+	Safe_Release(m_pNode);
+}
+
