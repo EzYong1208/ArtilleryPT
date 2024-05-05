@@ -22,6 +22,15 @@
     <Filter Include="99.Defines">
       <UniqueIdentifier>{cb1995de-d96d-431f-9081-b7a53db8b884}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01.Level">
+      <UniqueIdentifier>{8430ead3-7fcb-4b21-80a2-b5ba5ea8b461}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Level\99.Loading">
+      <UniqueIdentifier>{e532bdf6-af51-4272-b545-0fe4b92db371}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Level\99.Loading\Loader">
+      <UniqueIdentifier>{66131eff-b928-4cab-bcbf-119f5b47fed4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ArtilleryPT.h">
@@ -39,6 +48,9 @@
     <ClInclude Include="..\MainApp.h">
       <Filter>00.MainApp</Filter>
     </ClInclude>
+    <ClInclude Include="..\Loader.h">
+      <Filter>01.Level\99.Loading\Loader</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="ArtilleryPT.ico">
@@ -54,6 +66,9 @@
     </ClCompile>
     <ClCompile Include="..\MainApp.cpp">
       <Filter>00.MainApp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Loader.cpp">
+      <Filter>01.Level\99.Loading\Loader</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

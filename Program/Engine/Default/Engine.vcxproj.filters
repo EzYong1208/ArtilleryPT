@@ -303,8 +303,8 @@
     <ClInclude Include="..\public\Font_Manager.h">
       <Filter>01.Utility\08.Font\Manager</Filter>
     </ClInclude>
-    <ClInclude Include="..\Public\CRenderObject.h" />
     <ClInclude Include="..\Public\AObject.h" />
+    <ClInclude Include="..\Public\RenderObject.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Private\Base.cpp">
@@ -448,8 +448,8 @@
     <ClCompile Include="..\private\Font_Manager.cpp">
       <Filter>01.Utility\08.Font\Manager</Filter>
     </ClCompile>
-    <ClCompile Include="..\Private\CRenderObject.cpp" />
     <ClCompile Include="..\Private\AObject.cpp" />
+    <ClCompile Include="..\Private\RenderObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="..\Bin\ShaderFiles\Shader_Navigation.hlsl">

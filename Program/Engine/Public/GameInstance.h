@@ -13,6 +13,7 @@
 #include "Collision_Manager.h"
 #include "Frustum.h"
 #include "Font_Manager.h"
+#include "RenderObject.h"
 
 //	엔진내에 모든(클라이언트에 보여주기 위한) 매니저 클래스들을 보관함
 //	라이브러리 크기를 감소시킬 수 있다? 사용자가 실제 사용할 함수들만 open하려고(open 하고 싶은것만 구성)

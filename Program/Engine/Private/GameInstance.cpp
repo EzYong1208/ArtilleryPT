@@ -61,9 +61,14 @@ HRESULT CGameInstance::Initialize_Engine(HINSTANCE hInstance, _uint iNumLevels, 
 	if (FAILED(m_pFrustum->Initialize()))
 		return E_FAIL;
 
-
 	//Render prototype create
 	// 여기서 create하는거 하고(intialize), 그 다음에 릴리즈도 해야함(밑에서)
+	//CLayer* pLayer = Find_Layer(iLevelIndex, pLayerTag);
+	string TextureKey = "";
+	_float4x4 Transform;
+	ZeroMemory(&Transform, sizeof(_float4x4));
+	CRenderObject* pRenderObject = CRenderObject::Create(*ppDeviceOut, *ppDeviceContextOut, TextureKey, Transform);
+
 	return S_OK;
 }
 
@@ -181,7 +186,7 @@ _float CGameInstance::Get_TimeDelta(const _tchar * pTimerTag)
 	if (nullptr == m_pTimer_Manager)
 		return 0.f;
 
-	return m_pTimer_Manager->Get_TimeDelta(pTimerTag);
+	return (_float)m_pTimer_Manager->Get_TimeDelta(pTimerTag);
 }
 
 HRESULT CGameInstance::Add_Timer(const _tchar * pTimerTag)
@@ -444,6 +449,9 @@ void CGameInstance::Release_Engine()
 {
 	if (0 != CGameInstance::GetInstance()->DestroyInstance())
 		MSGBOX("Failed to Delete CGameInstance");
+
+	//CRenderObject* pRenderObject = new CRenderObject();
+	//pRenderObject->Free();
 
 	// 하위 매니저 해제
 

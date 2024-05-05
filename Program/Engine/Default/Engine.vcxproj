@@ -29,7 +29,6 @@
     <ClInclude Include="..\public\Collision_Manager.h" />
     <ClInclude Include="..\public\Component.h" />
     <ClInclude Include="..\public\Component_Manager.h" />
-    <ClInclude Include="..\Public\CRenderObject.h" />
     <ClInclude Include="..\public\CustomFont.h" />
     <ClInclude Include="..\Public\DebugDraw.h" />
     <ClInclude Include="..\Public\Engine_Defines.h" />
@@ -58,6 +57,7 @@
     <ClInclude Include="..\public\PipeLine.h" />
     <ClInclude Include="..\public\QuadTree.h" />
     <ClInclude Include="..\public\Renderer.h" />
+    <ClInclude Include="..\Public\RenderObject.h" />
     <ClInclude Include="..\public\Shader.h" />
     <ClInclude Include="..\public\Texture.h" />
     <ClInclude Include="..\public\Timer.h" />
@@ -84,7 +84,6 @@
     <ClCompile Include="..\private\Collision_Manager.cpp" />
     <ClCompile Include="..\private\Component.cpp" />
     <ClCompile Include="..\private\Component_Manager.cpp" />
-    <ClCompile Include="..\Private\CRenderObject.cpp" />
     <ClCompile Include="..\private\CustomFont.cpp" />
     <ClCompile Include="..\Private\DebugDraw.cpp" />
     <ClCompile Include="..\Private\Engine_Struct.cpp" />
@@ -109,6 +108,7 @@
     <ClCompile Include="..\private\PipeLine.cpp" />
     <ClCompile Include="..\private\QuadTree.cpp" />
     <ClCompile Include="..\private\Renderer.cpp" />
+    <ClCompile Include="..\Private\RenderObject.cpp" />
     <ClCompile Include="..\private\Shader.cpp" />
     <ClCompile Include="..\private\Texture.cpp" />
     <ClCompile Include="..\private\Timer.cpp" />

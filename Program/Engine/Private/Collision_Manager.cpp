@@ -21,7 +21,7 @@ HRESULT CCollision_Manager::Collision_AABB(_tchar* pSourTag, _tchar* pDestTag)
 
 	RELEASE_INSTANCE(CGameInstance);
 
-	return S_OK();
+	return S_OK;
 }
 
 void CCollision_Manager::Free()
