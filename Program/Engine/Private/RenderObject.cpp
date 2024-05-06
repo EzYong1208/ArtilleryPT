@@ -7,6 +7,14 @@ CRenderObject::CRenderObject(ID3D11Device* pDevice, ID3D11DeviceContext* pDevice
 {
 	Safe_AddRef(m_pDevice);
 	Safe_AddRef(m_pDeviceContext);
+
+
+	SetUp_Components();
+	string TextureKey = "";
+	_float4x4 Transform;
+	ZeroMemory(&Transform, sizeof(_float4x4));
+	SetTexture(TextureKey);
+	SetTransform(Transform);
 }
 
 void CRenderObject::SetTexture(string TagName)

@@ -45,7 +45,7 @@ HRESULT CAnimation::Update_TransformMatrices(_double TimeDelta)
 		if (nullptr == pKeyFrames)
 			return E_FAIL;
 
-		_uint iNumKeyFrame = pKeyFrames->size();
+		_uint iNumKeyFrame = _uint(pKeyFrames->size());
 
 		_uint iCurrentKeyFrameIndex = m_Channels[i]->Get_CurrentKeyFrame();
 		m_iCurrentKeyFrame = m_Channels[i]->Get_CurrentKeyFrame();
@@ -155,7 +155,7 @@ HRESULT CAnimation::Update_TransformMatricesOneTime(_double TimeDelta)
 			if (nullptr == pKeyFrames)
 				return E_FAIL;
 
-			_uint iNumKeyFrame = pKeyFrames->size();
+			_uint iNumKeyFrame = _uint(pKeyFrames->size());
 
 			_uint iCurrentKeyFrameIndex = m_Channels[i]->Get_CurrentKeyFrame();
 			m_iCurrentKeyFrame = m_Channels[i]->Get_CurrentKeyFrame();

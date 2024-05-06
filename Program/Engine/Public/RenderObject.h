@@ -13,9 +13,11 @@ class CTransform;
 
 class CRenderObject final : public CBase
 {
-private:
+//private:
+//static Create말고 unique_ptr로 생성해 볼려고
+public:
 	CRenderObject(ID3D11Device* pDevice, ID3D11DeviceContext* pDeviceContext);
-	CRenderObject(const CRenderObject& rhs);
+	CRenderObject(const CRenderObject& rhs) = delete;
 	virtual ~CRenderObject() = default;
 
 public:

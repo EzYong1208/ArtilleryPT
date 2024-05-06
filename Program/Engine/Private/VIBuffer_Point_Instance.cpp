@@ -97,7 +97,7 @@ HRESULT CVIBuffer_Point_Instance::NativeConstruct_Prototype(_uint iNumInstance)
 		pInstanceMatrix[i].vUp = _float4(0.f, 1.f, 0.f, 0.f);
 		pInstanceMatrix[i].vLook = _float4(0.f, 0.f, 1.f, 0.f);
 		//	우선은 랜덤하게 포지션 잡아줌
-		pInstanceMatrix[i].vPosition = _float4(rand() % 15, 0.f, rand() % 15, 1.f);
+		pInstanceMatrix[i].vPosition = _float4(_float(rand() % 15), 0.f, _float(rand() % 15), 1.f);
 	}
 
 	ZeroMemory(&m_VBInstSubResource, sizeof(D3D11_SUBRESOURCE_DATA));
@@ -181,7 +181,7 @@ void CVIBuffer_Point_Instance::Update(_double TimeDelta)
 	{
 		_vector		vPosition = XMLoadFloat4(&(((VTXMATRIX*)SubResource.pData)[i].vPosition));
 
-		vPosition += XMVector3Normalize(XMLoadFloat3(&m_ParticleDesc.vMoveDir)) * m_pSpeeds[i] * TimeDelta;
+		vPosition += XMVector3Normalize(XMLoadFloat3(&m_ParticleDesc.vMoveDir)) * m_pSpeeds[i] * (_float)TimeDelta;
 
 		if (XMVectorGetY(vPosition) < -10.f)
 			vPosition = XMVectorSetY(vPosition, 0.f);

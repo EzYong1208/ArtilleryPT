@@ -74,7 +74,7 @@ HRESULT CNavigation::NativeConstruct_Prototype(const _tchar * pNaviDataFilePath,
 			break;
 
 		//	Index는 셀 컨테이너의 사이즈(m_Cells.size()), 아직 푸쉬 안했으니깐 0임
-		CCell*		pCell = CCell::Create(m_pDevice, m_pDeviceContext, vPoints, m_Cells.size());
+		CCell*		pCell = CCell::Create(m_pDevice, m_pDeviceContext, vPoints, _uint(m_Cells.size()));
 
 		if (nullptr == pCell)
 			return E_FAIL;

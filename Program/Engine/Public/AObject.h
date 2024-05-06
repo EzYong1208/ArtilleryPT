@@ -1,17 +1,17 @@
 #pragma once
 
 #include "Engine_Defines.h"
+#include "RenderObject.h"
 
 BEGIN(Engine)
-
-class CRenderObject;
 
 class ENGINE_DLL AObject
 {
 public:
 	void Test();
 
-	CRenderObject* RenderObject_ptr = nullptr;
+	//CRenderObject* RenderObject_ptr = nullptr;
+	unique_ptr<CRenderObject> _RenderObject;
 
 protected:
 	void SetTexture(string TextureKey);
