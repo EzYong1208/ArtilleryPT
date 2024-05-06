@@ -2,11 +2,15 @@
 #include <filesystem>
 #include <fstream>
 #include <iostream>
+#include "AObject.h"
 
 HRESULT Loader::LoadingTest()
 {
-	if (FAILED(Add_Prototype_Textures()))
-		return E_FAIL;
+	//if (FAILED(Add_Prototype_Textures()))
+	//	return E_FAIL;
+
+	AObject* AObject_ptr = new AObject();
+	AObject_ptr->Test();
 
 	return S_OK;
 }

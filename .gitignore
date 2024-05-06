@@ -20,3 +20,4 @@ Program/Engine/ThirdPartyLib/
 *.res
 *.tlog
 *.exe.recipe
+*.bat

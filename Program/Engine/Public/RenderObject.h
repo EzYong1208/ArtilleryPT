@@ -21,7 +21,7 @@ private:
 public:
 	void SetTexture(string TextureKey);
 	void SetTransform(_float4x4 Transform);
-	void Render();
+	HRESULT Render();
 
 private:
 	CShader* m_pShaderCom = nullptr;
@@ -45,7 +45,7 @@ private:
 	HRESULT Add_Component(_uint iLevelIndex, const _tchar* pPrototypeTag, const _tchar* pComponentTag, CComponent** ppOut, void* pArg = nullptr);
 
 public:
-	static CRenderObject* Create(ID3D11Device* pDevice, ID3D11DeviceContext* pDeviceContext, string TextureKey, _float4x4 Transform);
+	static CRenderObject* Create(ID3D11Device* pDevice, ID3D11DeviceContext* pDeviceContext);
 	virtual void	Free() override;
 
 };

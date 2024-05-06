@@ -29,8 +29,24 @@ void CRenderObject::SetTransform(_float4x4 Transform)
 	m_pTransform->Set_WorldMatrix(Transform);
 }
 
-void CRenderObject::Render()
+// 기존 CTT 등에서는 각 게임오브젝트들의 LateTick에서 	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_PRIORITY, this); 추가해서
+// Renderer의 각 Render_Priortity 등의 함수에서 그 렌더러 그룹의 오브젝트들의 Render 함수를 호출하는 식이었음
+// 이 부분을 어떻게 해야할지 고민해야함!
+HRESULT CRenderObject::Render()
 {
+	if (nullptr == m_pVIBufferCom)
+		return E_FAIL;
+
+	m_pTransform->Bind_OnShader(m_pShaderCom, "g_WorldMatrix");
+	m_pShaderCom->Set_RawValue("g_ViewMatrix", &XMMatrixIdentity(), sizeof(_float4x4));
+	m_pShaderCom->Set_RawValue("g_ProjMatrix", &m_ProjMatrix, sizeof(_float4x4));
+
+	if (FAILED(m_pTextureCom->SetUp_OnShader(m_pShaderCom, "g_DiffuseTexture", 0)))
+		return E_FAIL;
+
+	m_pVIBufferCom->Render(m_pShaderCom, 0);
+
+	return S_OK;
 }
 
 HRESULT CRenderObject::NativeConstruct(string TextureKey, _float4x4 Transform)
@@ -98,12 +114,16 @@ HRESULT CRenderObject::Add_Component(_uint iLevelIndex, const _tchar* pPrototype
 	return S_OK;
 }
 
-CRenderObject* CRenderObject::Create(ID3D11Device* pDevice, ID3D11DeviceContext* pDeviceContext, string TextureKey, _float4x4 Transform)
+CRenderObject* CRenderObject::Create(ID3D11Device* pDevice, ID3D11DeviceContext* pDeviceContext)
 {
 	//GameInstance clone 부탁
 
 	//	setting
 	CRenderObject* pInstance = new CRenderObject(pDevice, pDeviceContext);
+
+	string TextureKey = "";
+	_float4x4 Transform;
+	ZeroMemory(&Transform, sizeof(_float4x4));
 
 	pInstance->NativeConstruct(TextureKey, Transform);
 

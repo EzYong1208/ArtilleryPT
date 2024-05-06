@@ -115,6 +115,7 @@ private:
 	CFrustum*					m_pFrustum = nullptr;
 	CFont_Manager*				m_pFont_Manager = nullptr;
 
+
 public:
 	//	할당해놨던 모든 매니저들을 다 정리하려는 함수
 	static	void		Release_Engine();

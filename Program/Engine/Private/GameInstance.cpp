@@ -64,10 +64,11 @@ HRESULT CGameInstance::Initialize_Engine(HINSTANCE hInstance, _uint iNumLevels, 
 	//Render prototype create
 	// 여기서 create하는거 하고(intialize), 그 다음에 릴리즈도 해야함(밑에서)
 	//CLayer* pLayer = Find_Layer(iLevelIndex, pLayerTag);
-	string TextureKey = "";
-	_float4x4 Transform;
-	ZeroMemory(&Transform, sizeof(_float4x4));
-	CRenderObject* pRenderObject = CRenderObject::Create(*ppDeviceOut, *ppDeviceContextOut, TextureKey, Transform);
+	// 여기 말고 MainApp에서 해보기 고려
+	//string TextureKey = "";
+	//_float4x4 Transform;
+	//ZeroMemory(&Transform, sizeof(_float4x4));
+	//CRenderObject* pRenderObject = CRenderObject::Create(*ppDeviceOut, *ppDeviceContextOut, TextureKey, Transform);
 
 	return S_OK;
 }
@@ -449,9 +450,6 @@ void CGameInstance::Release_Engine()
 {
 	if (0 != CGameInstance::GetInstance()->DestroyInstance())
 		MSGBOX("Failed to Delete CGameInstance");
-
-	//CRenderObject* pRenderObject = new CRenderObject();
-	//pRenderObject->Free();
 
 	// 하위 매니저 해제
 
