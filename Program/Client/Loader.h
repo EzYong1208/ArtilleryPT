@@ -2,10 +2,13 @@
 
 #include "MainApp.h"
 
-class CLoader
+class Loader
 {
 public:
 	HRESULT LoadingTest();
+
+public:
+	HRESULT	Add_Prototype_Textures();
 
 public:
 	string Get_ResourceMap_Path(string PrototypeTag);

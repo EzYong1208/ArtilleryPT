@@ -3,9 +3,9 @@
 
 HRESULT MainApp::Open_Level()
 {
-	CLoader* Loader = new CLoader();
+	Loader* pLoader = new Loader();
 
-	Loader->LoadingTest();
+	pLoader->LoadingTest();
 
 	return S_OK;
 }
