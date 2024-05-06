@@ -1,8 +1,49 @@
 #include "Loader.h"
-#include <filesystem>
-#include <fstream>
-#include <iostream>
 #include "AObject.h"
+
+
+Loader::Loader(ID3D11Device* pDevice, ID3D11DeviceContext* pDeviceContext)
+	: pDevice(pDevice)
+	, pDeviceContext(pDeviceContext)
+{
+	// 다른 방법 없을까?
+	//Safe_AddRef(pDevice);
+	//Safe_AddRef(pDeviceContext);
+}
+
+unsigned int APIENTRY	ThreadFunction(void* pArg)
+{
+	//	Engine-Graphic_Device-InitDevice에서 장치에게 D3DCREATE_MULTITHREADED 전달을 꼭 해야 제대로 멀티스레드가 작동이 됨
+	//	CLoader 객체의 주소를 가지고 있으면 좋을 것 같다
+	Loader* pLoader = (Loader*)pArg;
+
+	EnterCriticalSection(&pLoader->Get_CS());
+
+	switch (pLoader->Get_LevelID())
+	{
+	case LEVEL_TEST:
+		pLoader->LoadingTest();
+		break;
+	}
+
+	LeaveCriticalSection(&pLoader->Get_CS());
+
+	return 0;
+}
+
+HRESULT Loader::NativeConstruct(LEVEL eNextLevel)
+{
+	InitializeCriticalSection(&CS);
+
+	hThread = (HANDLE)_beginthreadex(nullptr, 0, ThreadFunction, this, 0, nullptr);
+
+	if (0 == hThread)
+		return E_FAIL;
+
+	eLevel = eNextLevel;
+
+	return S_OK;
+}
 
 HRESULT Loader::LoadingTest()
 {
@@ -76,4 +117,31 @@ string Loader::Get_ResourceMap_Path(string PrototypeTag)
 	}
 
 	return Path;
+}
+
+Loader* Loader::Create(ID3D11Device* pDevice, ID3D11DeviceContext* pDeviceContext, LEVEL eNextLevel)
+{
+	Loader* pInstance = new Loader(pDevice, pDeviceContext);
+	 
+	//if (FAILED(pInstance->NativeConstruct(eNextLevel)))
+	//{
+	//	MSGBOX("Failed to Creating Loader");
+	//	Safe_Release(pInstance);
+	//}
+
+	pInstance->NativeConstruct(eNextLevel);
+
+	return pInstance;
+}
+
+void Loader::Free()
+{
+	// 다른 방법 없을까?
+	//WaitForSingleObject(hThread, INFINITE);
+	//CloseHandle(hThread);
+	//DeleteObject(hThread);
+	//DeleteCriticalSection(&CS);
+
+	//Safe_Release(pDeviceContext);
+	//Safe_Release(pDevice);
 }

@@ -48,6 +48,8 @@ using namespace Assimp;
 #include <algorithm>
 #include <io.h>
 #include <time.h>
+#include <filesystem>
+#include <fstream>
 using namespace std;
 
 //	메모리 누수를 체크하려면 #define USE_IMGUI 라인을 주석처리하기
