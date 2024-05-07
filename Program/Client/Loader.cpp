@@ -50,8 +50,10 @@ HRESULT Loader::LoadingTest()
 	//if (FAILED(Add_Prototype_Textures()))
 	//	return E_FAIL;
 
-	AObject* AObject_ptr = new AObject();
-	AObject_ptr->Test();
+	//unique_ptr<AObject> AObject_ptr = new AObject();
+
+	//AObject* AObject_ptr = new AObject();
+	//AObject_ptr->Test();
 
 	return S_OK;
 }
@@ -134,13 +136,13 @@ Loader* Loader::Create(ID3D11Device* pDevice, ID3D11DeviceContext* pDeviceContex
 	return pInstance;
 }
 
-void Loader::Free()
+void Loader::Release()
 {
 	// 다른 방법 없을까?
-	//WaitForSingleObject(hThread, INFINITE);
-	//CloseHandle(hThread);
-	//DeleteObject(hThread);
-	//DeleteCriticalSection(&CS);
+	WaitForSingleObject(hThread, INFINITE);
+	CloseHandle(hThread);
+	DeleteObject(hThread);
+	DeleteCriticalSection(&CS);
 
 	//Safe_Release(pDeviceContext);
 	//Safe_Release(pDevice);

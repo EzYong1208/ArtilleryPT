@@ -40,7 +40,7 @@ private:
 
 public:
 	static Loader* Create(ID3D11Device* pDevice, ID3D11DeviceContext* pDeviceContext, LEVEL eNextLevel);
-	void Free();
+	void Release();
 
 };
 

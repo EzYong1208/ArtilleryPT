@@ -8,6 +8,10 @@ BEGIN(Engine)
 class ENGINE_DLL AObject
 {
 public:
+	AObject();
+	~AObject();
+
+public:
 	void Test();
 
 	//CRenderObject* RenderObject_ptr = nullptr;

@@ -5,6 +5,8 @@ HRESULT MainApp::Open_Level()
 {
 	//Loader* pLoader = new Loader();
 
+	//unique_ptr<Loader> pLoader(new Loader());
+
 	//pLoader->LoadingTest();
 
 	return S_OK;
@@ -12,9 +14,15 @@ HRESULT MainApp::Open_Level()
 
 MainApp* MainApp::Create()
 {
-	MainApp* pInstance = new MainApp();
+	//MainApp* pInstance = new MainApp();
 
-	pInstance->Open_Level();
+	//pInstance->Open_Level();
 
-	return pInstance;
+	//return pInstance;
+	return nullptr;
+}
+
+void MainApp::Release()
+{
+
 }
