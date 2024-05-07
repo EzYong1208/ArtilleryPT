@@ -13,6 +13,7 @@
 #include "Collision_Manager.h"
 #include "Frustum.h"
 #include "Font_Manager.h"
+#include "ResourceManager.h"
 #include "RenderObject.h"
 
 //	엔진내에 모든(클라이언트에 보여주기 위한) 매니저 클래스들을 보관함
@@ -114,6 +115,7 @@ private:
 	CCollision_Manager*			m_pCollision_Manager = nullptr;
 	CFrustum*					m_pFrustum = nullptr;
 	CFont_Manager*				m_pFont_Manager = nullptr;
+	unique_ptr<AObject> _pResourceManager;
 
 
 public:

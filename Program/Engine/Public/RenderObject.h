@@ -11,7 +11,7 @@ class CVIBuffer_Rect;
 class CComponent;
 class CTransform;
 
-class CRenderObject final : public CBase
+class ENGINE_DLL CRenderObject final : public CBase
 {
 //private:
 //static Create말고 unique_ptr로 생성해 볼려고

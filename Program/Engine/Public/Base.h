@@ -7,7 +7,7 @@
 
 BEGIN(Engine)
 
-class _declspec(dllexport)	CBase	abstract	//	abstract: 추상클래스화 했다(절대 독립적으로 동적할당 할 수 없음)
+class ENGINE_DLL CBase abstract	//	abstract: 추상클래스화 했다(절대 독립적으로 동적할당 할 수 없음)
 {
 protected:
 	CBase();

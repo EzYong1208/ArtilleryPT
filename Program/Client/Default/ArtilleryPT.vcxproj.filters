@@ -33,11 +33,11 @@
     <ClInclude Include="targetver.h">
       <Filter>98.Default</Filter>
     </ClInclude>
-    <ClInclude Include="..\MainApp.h">
-      <Filter>00.MainApp</Filter>
-    </ClInclude>
     <ClInclude Include="..\Loader.h">
       <Filter>01.Level\99.Loading\Loader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MainApp.h">
+      <Filter>00.MainApp</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -52,11 +52,11 @@
     <ClCompile Include="ArtilleryPT.cpp">
       <Filter>98.Default</Filter>
     </ClCompile>
-    <ClCompile Include="..\MainApp.cpp">
-      <Filter>00.MainApp</Filter>
-    </ClCompile>
     <ClCompile Include="..\Loader.cpp">
       <Filter>01.Level\99.Loading\Loader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MainApp.cpp">
+      <Filter>00.MainApp</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

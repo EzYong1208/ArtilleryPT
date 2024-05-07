@@ -9,12 +9,12 @@ class ENGINE_DLL AObject
 {
 public:
 	AObject();
-	~AObject();
+	virtual ~AObject() = default;
 
 public:
+	virtual void Release() {};
 	void Test();
 
-	//CRenderObject* RenderObject_ptr = nullptr;
 	unique_ptr<CRenderObject> _RenderObject;
 
 protected:

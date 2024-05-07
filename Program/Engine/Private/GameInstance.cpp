@@ -30,6 +30,8 @@ CGameInstance::CGameInstance()
 	Safe_AddRef(m_pComponent_Manager);
 	Safe_AddRef(m_pLevel_Manager);
 	Safe_AddRef(m_pObject_Manager);
+
+	_pResourceManager = ResourceManager::Create();
 }
 
 HRESULT CGameInstance::Initialize_Engine(HINSTANCE hInstance, _uint iNumLevels, const CGraphic_Device::GRAPHICDESC & GraphicDesc, ID3D11Device ** ppDeviceOut, ID3D11DeviceContext ** ppDeviceContextOut)
@@ -69,6 +71,9 @@ HRESULT CGameInstance::Initialize_Engine(HINSTANCE hInstance, _uint iNumLevels, 
 	//_float4x4 Transform;
 	//ZeroMemory(&Transform, sizeof(_float4x4));
 	//CRenderObject* pRenderObject = CRenderObject::Create(*ppDeviceOut, *ppDeviceContextOut, TextureKey, Transform);
+
+	_pResourceManager = ResourceManager::Create();
+
 
 	return S_OK;
 }
@@ -450,6 +455,9 @@ void CGameInstance::Release_Engine()
 {
 	if (0 != CGameInstance::GetInstance()->DestroyInstance())
 		MSGBOX("Failed to Delete CGameInstance");
+
+	// Release_Engine()이 static이라 클래스의 인스턴스에 종속되지 않으므로, 클래스의 멤버 변수에 접근할 수 없음..
+	//_pResourceManager->
 
 	// 하위 매니저 해제
 
