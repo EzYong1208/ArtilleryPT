@@ -5,6 +5,11 @@ TestObject::TestObject()
 
 }
 
+TestObject::~TestObject()
+{
+	_RenderObject->Free();
+}
+
 void TestObject::Tick(_double TimeDelta)
 {
 }

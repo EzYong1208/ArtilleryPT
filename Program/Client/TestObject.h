@@ -6,6 +6,7 @@ class TestObject : public AGameObject
 {
 public:
 	TestObject();
+	~TestObject();
 
 public:
 	void Tick(_double deltaTime) override;

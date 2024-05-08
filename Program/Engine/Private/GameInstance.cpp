@@ -5,7 +5,6 @@ IMPLEMENT_SINGLETON(CGameInstance)
 CGameInstance::CGameInstance()
 	: m_pGraphic_Device(CGraphic_Device::GetInstance())
 	, m_pInput_Device(CInput_Device::GetInstance())
-	, m_pTimer_Manager(CTimer_Manager::GetInstance())
 	, m_pComponent_Manager(CComponent_Manager::GetInstance())
 	, m_pPipeLine(CPipeLine::GetInstance())
 	, m_pKey_Manager(CKey_Manager::GetInstance())
@@ -16,7 +15,6 @@ CGameInstance::CGameInstance()
 	Safe_AddRef(m_pPipeLine);
 	Safe_AddRef(m_pGraphic_Device);
 	Safe_AddRef(m_pInput_Device);
-	Safe_AddRef(m_pTimer_Manager);
 	Safe_AddRef(m_pComponent_Manager);
 
 	_AResourceManager = make_unique<AResourceManager>();
@@ -260,9 +258,6 @@ void CGameInstance::Release_Engine()
 
 	// 하위 매니저 해제
 
-	if (0 != CTimer_Manager::GetInstance()->DestroyInstance())
-		MSGBOX("Failed to Delete CTimer_Manager");
-
 	if (0 != CKey_Manager::GetInstance()->DestroyInstance())
 		MSGBOX("Failed to Delete CKey_Manager");
 
@@ -288,7 +283,6 @@ void CGameInstance::Free()
 	Safe_Release(m_pKey_Manager);
 	Safe_Release(m_pPipeLine);
 	Safe_Release(m_pComponent_Manager);
-	Safe_Release(m_pTimer_Manager);
 	Safe_Release(m_pGraphic_Device);
 	Safe_Release(m_pInput_Device);
 }

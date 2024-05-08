@@ -10,12 +10,12 @@ CRenderObject::CRenderObject(ID3D11Device* pDevice, ID3D11DeviceContext* pDevice
 	Safe_AddRef(m_pDeviceContext);
 
 
-	SetUp_Components();
-	string TextureKey = "";
-	_float4x4 Transform;
-	ZeroMemory(&Transform, sizeof(_float4x4));
-	SetTexture(TextureKey);
-	SetTransform(Transform);
+	//SetUp_Components();
+	//string TextureKey = "";
+	//_float4x4 Transform;
+	//ZeroMemory(&Transform, sizeof(_float4x4));
+	//SetTexture(TextureKey);
+	//SetTransform(Transform);
 }
 
 void CRenderObject::SetTexture(string TagName)
@@ -146,10 +146,10 @@ CRenderObject* CRenderObject::Create(ID3D11Device* pDevice, ID3D11DeviceContext*
 
 void CRenderObject::Free()
 {
-	Safe_Release(m_pRendererCom);
-	Safe_Release(m_pShaderCom);
-	Safe_Release(m_pVIBufferCom);
-	Safe_Release(m_pTransform);
+	//Safe_Release(m_pRendererCom);
+	//Safe_Release(m_pShaderCom);
+	//Safe_Release(m_pVIBufferCom);
+	//Safe_Release(m_pTransform);
 
 	Safe_Release(m_pDeviceContext);
 	Safe_Release(m_pDevice);
