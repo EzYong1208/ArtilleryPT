@@ -9,7 +9,6 @@ Program/Engine/Public/assimp/
 *.exe
 *.idb
 *.pdb
-*.ico
 *.ilk
 *.log
 *.obj

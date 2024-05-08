@@ -183,8 +183,8 @@
       <AdditionalOptions>/ignore:4099 %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <PostBuildEvent>
-      <Command>
-      </Command>
+      <Command>CD $(SolutionDir)
+CALL $(SolutionDir)UpdateLib.bat</Command>
     </PostBuildEvent>
     <FxCompile>
       <ShaderType>Effect</ShaderType>

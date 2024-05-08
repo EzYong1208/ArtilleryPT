@@ -10,6 +10,7 @@ class CRenderer;
 class CVIBuffer_Rect;
 class CComponent;
 class CTransform;
+class AGameObject;
 
 class ENGINE_DLL CRenderObject final : public CBase
 {
@@ -24,6 +25,7 @@ public:
 	void SetTexture(string TextureKey);
 	void SetTransform(_float4x4 Transform);
 	HRESULT Render();
+	void Add_RenderGroup(AGameObject* pRenderObject);
 
 private:
 	CShader* m_pShaderCom = nullptr;

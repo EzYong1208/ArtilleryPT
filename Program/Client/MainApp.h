@@ -30,6 +30,9 @@ public:
 
 public:
 	MainAppError NativeConstruct();
+	void Tick(_double TimeDelta);
+	void LateTick();
+	void Render();
 
 private:
 	//	처음 레벨을 뭐로 할지 정함

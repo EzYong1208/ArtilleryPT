@@ -52,12 +52,37 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     pMainApp = MainApp::Create();
 
     // 기본 메시지 루프입니다:
-    while (GetMessage(&msg, nullptr, 0, 0))
+    //while (GetMessage(&msg, nullptr, 0, 0))
+    //{
+    //    if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
+    //    {
+    //        TranslateMessage(&msg);
+    //        DispatchMessage(&msg);
+    //    }
+    //}
+
+    while (true)
     {
-        if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
+        if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
         {
-            TranslateMessage(&msg);
-            DispatchMessage(&msg);
+            if (WM_QUIT == msg.message)
+                break;
+            if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
+            {
+                TranslateMessage(&msg);
+                DispatchMessage(&msg);
+            }
+        }
+
+        for (int frame = 0; frame < 5; ++frame) {
+            // 경과된 시간은 임의로 0.1초로 가정
+            _double deltaTime = 0.1f;
+
+            // APeople의 Tick() 메서드 호출
+            pMainApp->Tick(deltaTime);
+
+            // APeople의 LateTick() 메서드 호출
+            pMainApp->LateTick();
         }
     }
 

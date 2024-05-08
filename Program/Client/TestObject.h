@@ -8,5 +8,9 @@ public:
 	TestObject();
 
 public:
+	void Tick(_double deltaTime) override;
+	void LateTick(AGameObject* pRenderObject) override;
+
+public:
 	void Test();
 };

@@ -20,6 +20,8 @@ public:
 	};
 
 public:
+	virtual void Tick(_double TimeDelta) {};
+	virtual void LateTick(AGameObject* pRenderObject) { /*_RenderObject->Add_RenderGroup(pRenderObject);*/ };
 	void Render();
 
 public:

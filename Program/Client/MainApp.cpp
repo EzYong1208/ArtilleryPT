@@ -30,6 +30,21 @@ MainAppError MainApp::NativeConstruct()
 	return MainAppError::Success;
 }
 
+void MainApp::Tick(_double TimeDelta)
+{
+	_TestObject->Tick(TimeDelta);
+}
+
+void MainApp::LateTick()
+{
+	_TestObject->LateTick(_TestObject.get());
+}
+
+void MainApp::Render()
+{
+
+}
+
 void MainApp::Open_Level()
 {
 
@@ -54,11 +69,11 @@ void MainApp::Release()
 	//MainApp::Release() 가 static 함수이기 때문에 불가능.
 	//_TestObject->Release();
 
-	Safe_Release(_Device);
-	Safe_Release(_DeviceContext);
+	//Safe_Release(_Device);
+	//Safe_Release(_DeviceContext);
 	Safe_Release(_GameInstance);
 
-	CGameInstance::Release_Engine();
+	//CGameInstance::Release_Engine();
 
 	delete this;
 }

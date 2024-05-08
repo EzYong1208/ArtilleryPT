@@ -1,5 +1,6 @@
 #include "RenderObject.h"
 #include "GameInstance.h"
+#include "AGameObject.h"
 
 CRenderObject::CRenderObject(ID3D11Device* pDevice, ID3D11DeviceContext* pDeviceContext)
 	: m_pDevice(pDevice)
@@ -55,6 +56,11 @@ HRESULT CRenderObject::Render()
 	m_pVIBufferCom->Render(m_pShaderCom, 0);
 
 	return S_OK;
+}
+
+void CRenderObject::Add_RenderGroup(AGameObject* pRenderObject)
+{
+	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_PRIORITY, pRenderObject);
 }
 
 HRESULT CRenderObject::NativeConstruct(string TextureKey, _float4x4 Transform)
