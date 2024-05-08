@@ -13,12 +13,12 @@ enum class GameError
 
 class ResourceManager final : public AObject
 {
-private:
+public:
 	ResourceManager();
 
 public:
-	static unique_ptr<AObject> Create();
-	void Release() override;
+	static unique_ptr<ResourceManager> Create();
+	virtual void Release() override;
 
 public:
 	GameError Add_Prototype_Textures();

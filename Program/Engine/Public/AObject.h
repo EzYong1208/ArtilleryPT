@@ -13,13 +13,6 @@ public:
 
 public:
 	virtual void Release() {};
-	void Test();
-
-	unique_ptr<CRenderObject> _RenderObject;
-
-protected:
-	void SetTexture(string TextureKey);
-	void SetTransform(_float4x4 Transform);
 
 };
 

@@ -115,7 +115,7 @@ private:
 	CCollision_Manager*			m_pCollision_Manager = nullptr;
 	CFrustum*					m_pFrustum = nullptr;
 	CFont_Manager*				m_pFont_Manager = nullptr;
-	unique_ptr<AObject> _pResourceManager;
+	unique_ptr<ResourceManager> _pResourceManager;
 
 
 public:

@@ -19,9 +19,6 @@
     <Filter Include="01.Utility">
       <UniqueIdentifier>{7aff3a7f-f588-4621-be87-fdf0665cddd1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="01.Utility\00.GameInstance">
-      <UniqueIdentifier>{2da26271-96f8-4717-acd1-ddfe7826d0ca}</UniqueIdentifier>
-    </Filter>
     <Filter Include="01.Utility\01.Timer">
       <UniqueIdentifier>{a672b569-e009-4b91-9644-6622ee8e0a1b}</UniqueIdentifier>
     </Filter>
@@ -148,6 +145,9 @@
     <Filter Include="01.Utility\08.Font\Manager">
       <UniqueIdentifier>{3bcf9789-327d-4cf9-a9db-171046275af2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameInstance">
+      <UniqueIdentifier>{2da26271-96f8-4717-acd1-ddfe7826d0ca}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Public\Engine_Defines.h">
@@ -173,9 +173,6 @@
     </ClInclude>
     <ClInclude Include="..\public\Input_Device.h">
       <Filter>00.System\Input</Filter>
-    </ClInclude>
-    <ClInclude Include="..\public\GameInstance.h">
-      <Filter>01.Utility\00.GameInstance</Filter>
     </ClInclude>
     <ClInclude Include="..\public\Timer.h">
       <Filter>01.Utility\01.Timer</Filter>
@@ -305,6 +302,11 @@
     </ClInclude>
     <ClInclude Include="..\Public\AObject.h" />
     <ClInclude Include="..\Public\RenderObject.h" />
+    <ClInclude Include="..\public\GameInstance.h">
+      <Filter>GameInstance</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\ResourceManager.h" />
+    <ClInclude Include="..\Public\AGameObject.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Private\Base.cpp">
@@ -315,9 +317,6 @@
     </ClCompile>
     <ClCompile Include="..\private\Input_Device.cpp">
       <Filter>00.System\Input</Filter>
-    </ClCompile>
-    <ClCompile Include="..\private\GameInstance.cpp">
-      <Filter>01.Utility\00.GameInstance</Filter>
     </ClCompile>
     <ClCompile Include="..\private\Timer.cpp">
       <Filter>01.Utility\01.Timer</Filter>
@@ -450,6 +449,11 @@
     </ClCompile>
     <ClCompile Include="..\Private\AObject.cpp" />
     <ClCompile Include="..\Private\RenderObject.cpp" />
+    <ClCompile Include="..\private\GameInstance.cpp">
+      <Filter>GameInstance</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\ResourceManager.cpp" />
+    <ClCompile Include="..\Private\AGameObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="..\Bin\ShaderFiles\Shader_Navigation.hlsl">

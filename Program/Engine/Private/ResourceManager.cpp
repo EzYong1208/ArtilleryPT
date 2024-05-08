@@ -1,8 +1,12 @@
 #include "ResourceManager.h"
 
-unique_ptr<AObject> ResourceManager::Create()
+ResourceManager::ResourceManager()
 {
-	return unique_ptr<AObject>(new ResourceManager());
+}
+
+unique_ptr<ResourceManager> ResourceManager::Create()
+{
+	return make_unique<ResourceManager>();
 }
 
 void ResourceManager::Release()
@@ -22,7 +26,6 @@ GameError ResourceManager::Add_Prototype_Textures()
 
 	if (!input_file.is_open())
 	{
-		int a = 0;
 		return GameError::HaveNoResource;
 	}
 

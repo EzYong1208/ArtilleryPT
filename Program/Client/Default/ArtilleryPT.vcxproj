@@ -136,6 +136,7 @@
   <ItemGroup>
     <ClInclude Include="..\Loader.h" />
     <ClInclude Include="..\MainApp.h" />
+    <ClInclude Include="..\TestObject.h" />
     <ClInclude Include="ArtilleryPT.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Resource.h" />
@@ -144,6 +145,7 @@
   <ItemGroup>
     <ClCompile Include="..\Loader.cpp" />
     <ClCompile Include="..\MainApp.cpp" />
+    <ClCompile Include="..\TestObject.cpp" />
     <ClCompile Include="ArtilleryPT.cpp" />
   </ItemGroup>
   <ItemGroup>
