@@ -16,16 +16,16 @@ MainApp::~MainApp()
 
 MainAppError MainApp::NativeConstruct()
 {
-	CGraphic_Device::GRAPHICDESC GraphicDesc;
-	ZeroMemory(&GraphicDesc, sizeof(CGraphic_Device::GRAPHICDESC));
+	//CGraphic_Device::GRAPHICDESC GraphicDesc;
+	//ZeroMemory(&GraphicDesc, sizeof(CGraphic_Device::GRAPHICDESC));
 
-	GraphicDesc.hWnd = _hWnd;
-	GraphicDesc.eWinMode = CGraphic_Device::MODE_WIN;
-	GraphicDesc.iWinCX = 1280;
-	GraphicDesc.iWinCY = 720;
+	//GraphicDesc.hWnd = _hWnd;
+	//GraphicDesc.eWinMode = CGraphic_Device::MODE_WIN;
+	//GraphicDesc.iWinCX = 1280;
+	//GraphicDesc.iWinCY = 720;
 
-	if (FAILED(_GameInstance->Initialize_Engine(_hInst, 0, GraphicDesc, &_Device, &_DeviceContext)))
-		return MainAppError::InitializeEngine_Failed;
+	//if (FAILED(_GameInstance->Initialize_Engine(_hInst, 0, GraphicDesc, &_Device, &_DeviceContext)))
+	//	return MainAppError::InitializeEngine_Failed;
 
 	return MainAppError::Success;
 }
@@ -71,7 +71,7 @@ void MainApp::Release()
 
 	//Safe_Release(_Device);
 	//Safe_Release(_DeviceContext);
-	Safe_Release(_GameInstance);
+	//Safe_Release(_GameInstance);
 
 	//CGameInstance::Release_Engine();
 
