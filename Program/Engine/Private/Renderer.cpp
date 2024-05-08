@@ -1,6 +1,6 @@
 
 #include "..\Public\Renderer.h"
-#include "GameObject.h"
+#include "AGameObject.h"
 
 CRenderer::CRenderer(ID3D11Device* pDevice, ID3D11DeviceContext* pDeviceContext)
 	: CComponent(pDevice, pDeviceContext)
@@ -17,7 +17,7 @@ HRESULT CRenderer::NativeConstruct(void * pArg)
 	return S_OK;
 }
 
-HRESULT CRenderer::Add_RenderGroup(RENDERGROUP eRenderGroup, CGameObject * pRenderObject)
+HRESULT CRenderer::Add_RenderGroup(RENDERGROUP	eRenderGroup, AGameObject* pRenderObject)
 {
 	if (eRenderGroup >= RENDER_END ||
 		nullptr == pRenderObject)
@@ -25,7 +25,7 @@ HRESULT CRenderer::Add_RenderGroup(RENDERGROUP eRenderGroup, CGameObject * pRend
 
 	m_RenderObjects[eRenderGroup].push_back(pRenderObject);
 
-	Safe_AddRef(pRenderObject);
+	//Safe_AddRef(pRenderObject);
 
 	return S_OK;
 }
@@ -33,12 +33,6 @@ HRESULT CRenderer::Add_RenderGroup(RENDERGROUP eRenderGroup, CGameObject * pRend
 HRESULT CRenderer::Render()
 {
 	if (FAILED(Render_Priority()))
-		return E_FAIL;
-
-	if (FAILED(Render_NonAlpha()))
-		return E_FAIL;
-
-	if (FAILED(Render_Alpha()))
 		return E_FAIL;
 
 	if (FAILED(Render_UI()))
@@ -53,35 +47,8 @@ HRESULT CRenderer::Clear_LevelObject(_uint iLevelIndex)
 		nullptr == m_pDeviceContext)
 		return E_FAIL;
 
-	for (auto& pRenderObject : m_RenderObjects[RENDER_PRIORITY])
-	{
-		if(nullptr != pRenderObject)
-			Safe_Release(pRenderObject);
-	}
-
 	m_RenderObjects[RENDER_PRIORITY].clear();
 
-	for (auto& pRenderObject : m_RenderObjects[RENDER_NONBLEND])
-	{
-		if (nullptr != pRenderObject)
-			Safe_Release(pRenderObject);
-	}
-
-	m_RenderObjects[RENDER_NONBLEND].clear();
-
-	for (auto& pRenderObject : m_RenderObjects[RENDER_BLEND])
-	{
-		if (nullptr != pRenderObject)
-			Safe_Release(pRenderObject);
-	}
-
-	m_RenderObjects[RENDER_BLEND].clear();
-
-	for (auto& pRenderObject : m_RenderObjects[RENDER_UI])
-	{
-		if (nullptr != pRenderObject)
-			Safe_Release(pRenderObject);
-	}
 	m_RenderObjects[RENDER_UI].clear();
 
 	return S_OK;
@@ -93,49 +60,10 @@ HRESULT CRenderer::Render_Priority()
 	{
 		if (nullptr != pRenderObject)
 		{
-			if (FAILED(pRenderObject->Render()))
-				return E_FAIL;
+			pRenderObject->Render();
 		}
-		Safe_Release(pRenderObject);
 	}
 	m_RenderObjects[RENDER_PRIORITY].clear();
-
-	return S_OK;
-}
-
-HRESULT CRenderer::Render_NonAlpha()
-{
-	for (auto& pRenderObject : m_RenderObjects[RENDER_NONBLEND])
-	{
-		if (nullptr != pRenderObject)
-		{
-			if (FAILED(pRenderObject->Render()))
-				return E_FAIL;
-		}
-		Safe_Release(pRenderObject);
-	}
-	m_RenderObjects[RENDER_NONBLEND].clear();
-
-	return S_OK;
-}
-
-HRESULT CRenderer::Render_Alpha()
-{
-	m_RenderObjects[RENDER_BLEND].sort([](CGameObject* pSour, CGameObject* pDest)->_bool
-	{
-		return pSour->Get_CamDistance() > pDest->Get_CamDistance();
-	});
-
-	for (auto& pRenderObject : m_RenderObjects[RENDER_BLEND])
-	{
-		if (nullptr != pRenderObject)
-		{
-			if (FAILED(pRenderObject->Render()))
-				return E_FAIL;
-		}
-		Safe_Release(pRenderObject);
-	}
-	m_RenderObjects[RENDER_BLEND].clear();
 
 	return S_OK;
 }
@@ -150,10 +78,8 @@ HRESULT CRenderer::Render_UI()
 	{
 		if (nullptr != pRenderObject)
 		{
-			if (FAILED(pRenderObject->Render()))
-				return E_FAIL;
+			pRenderObject->Render();
 		}
-		Safe_Release(pRenderObject);
 	}
 	m_RenderObjects[RENDER_UI].clear();
 
@@ -186,9 +112,6 @@ void CRenderer::Free()
 
 	for (auto& RenderObjects : m_RenderObjects)
 	{
-		for (auto& pGameObject : RenderObjects)
-			Safe_Release(pGameObject);
-
 		RenderObjects.clear();
 	}
 }

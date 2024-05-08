@@ -1,14 +1,10 @@
 .vs/
 Resource/
-Program/Client/Bin/*
+Program/Client/Bin/ShaderFiles
 Program/Client/Default/x64/
 
-Program/Engine/Bin/*
-Program/Engine/Bin/Engine.lib
 Program/Engine/Default/x64/
 Program/Engine/Public/assimp/
-Program/Engine/Public/DirectXTK/
-Program/Engine/ThirdPartyLib/
 
 *.exe
 *.idb

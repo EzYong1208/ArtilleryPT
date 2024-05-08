@@ -4,6 +4,8 @@
 #include "AObject.h"
 #include "GameInstance.h"
 
+BEGIN(Engine)
+
 class AGameObject : public AObject
 {
 public:
@@ -18,9 +20,14 @@ public:
 	};
 
 public:
+	void Render();
+
+public:
 	void SetTexture(string TextureKey);
 	void SetTransform(_float4x4 Transform);
 
 protected:
 	unique_ptr<CRenderObject> _RenderObject;
 };
+
+END

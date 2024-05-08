@@ -26,16 +26,7 @@
 #include <DirectXTK/ScreenGrab.h>			//	스크린샷 찍는거같은 기능
 #include <wincodec.h>
 
-#ifdef max
-#undef max
-#undef min
-#include <assimp/scene.h>
-#include <assimp/Importer.hpp>
-#include <assimp/postprocess.h>
-#endif max
-
 using namespace DirectX;
-using namespace Assimp;
 
 #define DIRECTINPUT_VERSION 0x0800
 #include <dinput.h>

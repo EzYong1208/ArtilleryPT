@@ -1,18 +1,12 @@
 #pragma once
 
 //	앞으로 내가 추가한 모든 원형들을 추가할 것
-#include "VIBuffer_Point_Instance.h"
-#include "VIBuffer_Rect_Instance.h"
-#include "VIBuffer_Terrain.h"
 #include "VIBuffer_Rect.h"
-#include "VIBuffer_Cube.h"
 #include "Navigation.h"
 #include "Transform.h"
 #include "Renderer.h"
 #include "Texture.h"
 #include "Shader.h"
-#include "Model.h"
-#include "Collider.h"
 
 //	컴포넌트 원형들을 모아놓는다
 //	오브젝트 매니저와 비슷해보이지만 컴포넌트 매니저는 원형들만 모아놓음, 사본은 각 객체들이 보관할것임!

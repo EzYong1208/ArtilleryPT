@@ -134,7 +134,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\Loader.h" />
     <ClInclude Include="..\MainApp.h" />
     <ClInclude Include="..\TestObject.h" />
     <ClInclude Include="ArtilleryPT.h" />
@@ -143,7 +142,6 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Loader.cpp" />
     <ClCompile Include="..\MainApp.cpp" />
     <ClCompile Include="..\TestObject.cpp" />
     <ClCompile Include="ArtilleryPT.cpp" />

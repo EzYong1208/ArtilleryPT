@@ -14,7 +14,7 @@ class ENGINE_DLL CRenderer final : public CComponent
 {
 public:
 	//	PRIORITY : 젤 먼저 그림(스카이박스), NONALPHA : 불투명한 애들, ALPHA : 투명, UI : 가장 마지막에 그림(깊이 비교를 하지 않는다)
-	enum RENDERGROUP { RENDER_PRIORITY, RENDER_NONBLEND, RENDER_BLEND, RENDER_UI, RENDER_END };
+	enum RENDERGROUP { RENDER_PRIORITY, RENDER_UI, RENDER_END };
 
 protected:
 	explicit CRenderer(ID3D11Device* pDevice, ID3D11DeviceContext* pDeviceContext);
@@ -26,21 +26,19 @@ public:
 
 public:
 	//	몇번째 그룹에 넣는지 중요하니 eRenderGroup, 그릴려는 객체 pRenderObject
-	HRESULT					Add_RenderGroup(RENDERGROUP	eRenderGroup, class CGameObject* pRenderObject);
+	HRESULT					Add_RenderGroup(RENDERGROUP	eRenderGroup, class AGameObject* pRenderObject);
 	HRESULT					Render();
 
 	HRESULT					Clear_LevelObject(_uint iLevelIndex);
 
 private:
-	list<class CGameObject*>			m_RenderObjects[RENDER_END];
-	typedef list<class CGameObject*>	RENDEROBJECTS;
+	list<class AGameObject*>			m_RenderObjects[RENDER_END];
+	typedef list<class AGameObject*>	RENDEROBJECTS;
 
 	_uint					m_iNumLevels = 0;
 
 private:
 	HRESULT					Render_Priority();
-	HRESULT					Render_NonAlpha();
-	HRESULT					Render_Alpha();
 	HRESULT					Render_UI();
 
 public:

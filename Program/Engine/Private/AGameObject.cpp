@@ -1,5 +1,10 @@
 #include "AGameObject.h"
 
+void AGameObject::Render()
+{
+	_RenderObject->Render();
+}
+
 void AGameObject::SetTexture(string TextureKey)
 {
 	// RenderObject¿« SetTexture »£√‚

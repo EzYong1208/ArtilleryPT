@@ -2,79 +2,6 @@
 
 namespace Engine
 {
-	//	For.Anim
-	typedef struct tagKeyFrame
-	{
-		_float3		vScale;			//	이 키 프레임때 이 뼈가 표현해야하는 Scale
-		_float4		vRotation;		//	이 키 프레임때 이 뼈가 표현해야하는 Rotation(쿼터니언?)
-		_float3		vPosition;		//	이 키 프레임때 이 뼈가 표현해야하는 Position
-		_double		Time;			//	이 키 프레임이 등장해야하는 시간 Time
-	}KEYFRAME;
-
-	//	For.MeshMaterial
-	typedef struct tagMeshMaterialDesc
-	{
-		//	assimp로 불러올수 있는 텍스쳐의 최대갯수 : 18개(AI_TEXTURE_TYPE_MAX]
-		//	이 값만큼 그냥 배열로 표현하고 있음
-		class CTexture*	pTexture[AI_TEXTURE_TYPE_MAX];
-	}MESHMATERIALDESC;
-
-	//	For.Light
-	//	빛을 위한 구조체
-	typedef struct tagLightDesc
-	{
-		//	POINT : 정광원, 감쇄값
-		//	DIRECTIONAL : 현실에서는 존재할 수 없는 개념
-		enum TYPE { TYPE_DIRECTIONAL, TYPE_POINT, TYPE_END };
-
-		TYPE		eLightType = TYPE_END;
-		XMFLOAT4	vDiffuse;		//	광원의 기본적인 색상
-		XMFLOAT4	vAmbient;		//	환경 광원에 의한 색상 정보. 최종 곱하기, 최대한 실세계와 비슷하게 만들어주기 위한 추가적인 데이터
-		XMFLOAT4	vSpecular;		//	정반사 광원에 의핸 색상. 하이라이트 색상을 지정. 이 픽셀이 만약에 내 시선에 들어왔다면(스펙큘러의 세기)를 1로 두고, 아니면 0으로 둠
-		XMFLOAT4	vDirection;		//	방향벡터
-		XMFLOAT4	vPosition;
-	}LIGHTDESC;
-
-	//	For.MeshModel
-	//	메쉬를 로드하기위한 정보로써 필요한 구조체
-	typedef struct tagVertex_Model
-	{
-		XMFLOAT3			vPosition;
-		XMFLOAT3			vNormal;
-		XMFLOAT2			vTexUV;
-		XMFLOAT3			vTangent;
-	}VTXMODEL;
-
-	typedef struct ENGINE_DLL tagVertex_Model_Declaration
-	{
-		static const unsigned int iNumElements = 4;
-		static const D3D11_INPUT_ELEMENT_DESC	Elements[iNumElements];
-	}VTXMODEL_DECLARATION;
-
-	//	For.AnimModel
-	typedef struct tagVertex_Animation_Model
-	{
-		XMFLOAT3			vPosition;
-		XMFLOAT3			vNormal;
-		XMFLOAT2			vTexUV;
-		XMFLOAT3			vTangent;
-		XMUINT4				vBlendIndex;		//	실제 이 정보가 어떤 뼈들에게 영향을 받는지
-		XMFLOAT4			vBlendWeight;		//	뼈에게 몇퍼센트의 영향을 받고 있느냐
-	}VTXANIMMODEL;
-
-	typedef struct ENGINE_DLL tagVertex_AnimModel_Declaration
-	{
-		static const unsigned int iNumElements = 6;
-		static const D3D11_INPUT_ELEMENT_DESC	Elements[iNumElements];
-	}VTXANIMMODEL_DECLARATION;
-
-	//	For.PointInstance
-	typedef struct tagVertex_Point
-	{
-		XMFLOAT3			vPosition;
-		float				fPSize;
-	}VTXPOINT;
-
 	typedef struct ENGINE_DLL tagVertex_Point_Matrix_Declaration
 	{
 		static const unsigned int iNumElements = 6;
@@ -148,36 +75,6 @@ namespace Engine
 		static const D3D11_INPUT_ELEMENT_DESC	Elements[iNumElements];
 
 	}VTXTEX_DECLARATION;
-
-	//	For.CubeTexture
-	typedef struct tagVertex_CubeTexture
-	{
-		XMFLOAT3			vPosition;
-		XMFLOAT3			vTexUV;
-	}VTXCUBETEX;
-
-	typedef struct ENGINE_DLL tagVertex_Cube_Texture_Declaration
-	{
-		static const unsigned int iNumElements = 2;
-		static const D3D11_INPUT_ELEMENT_DESC	Elements[iNumElements];
-	}VTXCUBETEX_DECLARATION;
-
-	//	For.NormalTexture
-	typedef struct tagVertex_Normal_Texture
-	{
-		XMFLOAT3			vPosition;
-		XMFLOAT3			vNormal;
-		XMFLOAT2			vTexUV;
-	}VTXNORTEX;
-
-	typedef struct ENGINE_DLL tagVertex_Normal_Texture_Declaration
-	{
-		static const unsigned int iNumElements = 3;
-		static const D3D11_INPUT_ELEMENT_DESC	Elements[iNumElements];
-	}VTXNORTEX_DECLARATION;
-
-
-
 
 	typedef struct tagLineIndices32
 	{
