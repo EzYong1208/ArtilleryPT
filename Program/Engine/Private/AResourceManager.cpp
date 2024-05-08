@@ -1,21 +1,10 @@
-#include "ResourceManager.h"
+#include "AResourceManager.h"
 
-ResourceManager::ResourceManager()
+AResourceManager::AResourceManager()
 {
 }
 
-unique_ptr<ResourceManager> ResourceManager::Create()
-{
-	return make_unique<ResourceManager>();
-}
-
-void ResourceManager::Release()
-{
-	// ResourceManager 객체의 자원 해제 또는 상태 정리 작업 수행
-	// 파일 닫기, 데이터 정리 등
-}
-
-GameError ResourceManager::Add_Prototype_Textures()
+GameError AResourceManager::Add_Prototype_Textures()
 {
 	string FileName("../../../Resource/TextureList.txt");
 

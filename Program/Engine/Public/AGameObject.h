@@ -21,9 +21,6 @@ public:
 	void SetTexture(string TextureKey);
 	void SetTransform(_float4x4 Transform);
 
-public:
-	virtual void Release() override {};
-
 protected:
 	unique_ptr<CRenderObject> _RenderObject;
 };

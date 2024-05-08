@@ -11,14 +11,10 @@ enum class GameError
 	MAX
 };
 
-class ResourceManager final : public AObject
+class AResourceManager final : public AObject
 {
 public:
-	ResourceManager();
-
-public:
-	static unique_ptr<ResourceManager> Create();
-	virtual void Release() override;
+	AResourceManager();
 
 public:
 	GameError Add_Prototype_Textures();

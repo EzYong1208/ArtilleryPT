@@ -9,8 +9,4 @@ public:
 
 public:
 	void Test();
-
-public:
-	static unique_ptr<TestObject> Create();
-	virtual void Release() override;
 };

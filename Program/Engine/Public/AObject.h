@@ -11,9 +11,6 @@ public:
 	AObject();
 	virtual ~AObject() = default;
 
-public:
-	virtual void Release() {};
-
 };
 
 END

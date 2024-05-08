@@ -20,7 +20,7 @@ private:
 
 public:
 	//	static 함수이기 때문에 멤버변수를 사용할 수 없다
-	static	MainApp* Create();
+	static void Create();
 	static void Release();
 
 private:

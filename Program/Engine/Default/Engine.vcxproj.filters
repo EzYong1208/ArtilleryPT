@@ -148,6 +148,9 @@
     <Filter Include="GameInstance">
       <UniqueIdentifier>{2da26271-96f8-4717-acd1-ddfe7826d0ca}</UniqueIdentifier>
     </Filter>
+    <Filter Include="AObject">
+      <UniqueIdentifier>{c0b905ef-c9de-4fa1-8ea3-7044299bff39}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Public\Engine_Defines.h">
@@ -300,13 +303,19 @@
     <ClInclude Include="..\public\Font_Manager.h">
       <Filter>01.Utility\08.Font\Manager</Filter>
     </ClInclude>
-    <ClInclude Include="..\Public\AObject.h" />
     <ClInclude Include="..\Public\RenderObject.h" />
     <ClInclude Include="..\public\GameInstance.h">
       <Filter>GameInstance</Filter>
     </ClInclude>
-    <ClInclude Include="..\Public\ResourceManager.h" />
-    <ClInclude Include="..\Public\AGameObject.h" />
+    <ClInclude Include="..\Public\AGameObject.h">
+      <Filter>AObject</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\AObject.h">
+      <Filter>AObject</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\AResourceManager.h">
+      <Filter>AObject</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Private\Base.cpp">
@@ -447,13 +456,19 @@
     <ClCompile Include="..\private\Font_Manager.cpp">
       <Filter>01.Utility\08.Font\Manager</Filter>
     </ClCompile>
-    <ClCompile Include="..\Private\AObject.cpp" />
     <ClCompile Include="..\Private\RenderObject.cpp" />
     <ClCompile Include="..\private\GameInstance.cpp">
       <Filter>GameInstance</Filter>
     </ClCompile>
-    <ClCompile Include="..\Private\ResourceManager.cpp" />
-    <ClCompile Include="..\Private\AGameObject.cpp" />
+    <ClCompile Include="..\Private\AGameObject.cpp">
+      <Filter>AObject</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\AObject.cpp">
+      <Filter>AObject</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Private\AResourceManager.cpp">
+      <Filter>AObject</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="..\Bin\ShaderFiles\Shader_Navigation.hlsl">
