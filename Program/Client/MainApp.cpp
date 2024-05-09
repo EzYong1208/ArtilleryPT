@@ -1,6 +1,7 @@
 #include "MainApp.h"
-#include "TestObject.h"
 #include "GameInstance.h"
+#include "TestObject.h"
+#include "TestingItem.h"
 
 MainApp::MainApp()
 	: _GameInstance(CGameInstance::GetInstance())
@@ -28,6 +29,7 @@ MainAppError MainApp::NativeConstruct()
 	Ready_Prototype();
 
 	_TestObject = make_unique<TestObject>();
+	_TestingItem = make_unique<TestingItem>();
 
 	return MainAppError::Success;
 }
@@ -35,11 +37,13 @@ MainAppError MainApp::NativeConstruct()
 void MainApp::Tick(_double TimeDelta)
 {
 	_TestObject->Tick(TimeDelta);
+	_TestingItem->Tick(TimeDelta);
 }
 
 void MainApp::LateTick()
 {
 	_TestObject->LateTick(_TestObject.get());
+	_TestingItem->LateTick(_TestingItem.get());
 }
 
 void MainApp::Render()
@@ -96,6 +100,12 @@ void MainApp::Ready_Prototype()
 		TEXT("Prototype_Component_Texture_Default"),
 		CTexture::Create(_Device, _DeviceContext, TEXT("../../../Resource/Textures/Hug.png")));
 
+	// For.Prototype_Component_Texture_Background
+	_GameInstance->Add_Prototype(
+		0,
+		TEXT("Prototype_Component_Texture_Background"),
+		CTexture::Create(_Device, _DeviceContext, TEXT("../../../Resource/Textures/Background.png")));
+
 	Safe_AddRef(_Renderer);
 }
 
@@ -115,9 +125,6 @@ MainApp* MainApp::Create()
 
 void MainApp::Release()
 {
-	//MainApp::Release() 가 static 함수이기 때문에 불가능.
-	//_TestObject->Release();
-
 	Safe_Release(_Renderer);
 	Safe_Release(_Device);
 	Safe_Release(_DeviceContext);

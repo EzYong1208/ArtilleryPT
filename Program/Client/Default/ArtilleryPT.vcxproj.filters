@@ -28,6 +28,7 @@
       <Filter>00.MainApp</Filter>
     </ClInclude>
     <ClInclude Include="..\TestObject.h" />
+    <ClInclude Include="..\TestingItem.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="ArtilleryPT.ico">
@@ -45,6 +46,7 @@
       <Filter>00.MainApp</Filter>
     </ClCompile>
     <ClCompile Include="..\TestObject.cpp" />
+    <ClCompile Include="..\TestingItem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ArtilleryPT.rc">

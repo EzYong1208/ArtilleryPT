@@ -1,8 +1,11 @@
 #include "TestObject.h"
+#include "Renderer.h"
 
 TestObject::TestObject()
 {
 	_RenderObject->SetCoord_Size(0.f, 0.f, 300.f, 300.f);
+	_RenderObject->SetTexture("Prototype_Component_Texture_Default");
+	_RenderObject->SetRenderType(CRenderer::RENDER_PRIORITY);
 }
 
 TestObject::~TestObject()
@@ -23,9 +26,3 @@ void TestObject::LateTick(AGameObject* pRenderObject)
 {
 	__super::LateTick(pRenderObject);
 }
-
-void TestObject::Test()
-{
-	_RenderObject->Render();
-}
-	

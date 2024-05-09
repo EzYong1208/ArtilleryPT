@@ -79,6 +79,9 @@
     <Filter Include="AObject">
       <UniqueIdentifier>{c0b905ef-c9de-4fa1-8ea3-7044299bff39}</UniqueIdentifier>
     </Filter>
+    <Filter Include="AObject\Manager">
+      <UniqueIdentifier>{f794cf0b-6beb-4929-8542-13be5552a2fe}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Public\Engine_Defines.h">
@@ -166,11 +169,11 @@
     <ClInclude Include="..\Public\AObject.h">
       <Filter>AObject</Filter>
     </ClInclude>
-    <ClInclude Include="..\Public\AResourceManager.h">
-      <Filter>AObject</Filter>
-    </ClInclude>
     <ClInclude Include="..\Public\Navigation.h">
       <Filter>01.Utility\04.Component\07.Navigation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Public\AResourceManager.h">
+      <Filter>AObject\Manager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -251,7 +254,7 @@
       <Filter>AObject</Filter>
     </ClCompile>
     <ClCompile Include="..\Private\AResourceManager.cpp">
-      <Filter>AObject</Filter>
+      <Filter>AObject\Manager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

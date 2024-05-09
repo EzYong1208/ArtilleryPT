@@ -15,14 +15,15 @@ CRenderObject::CRenderObject(ID3D11Device* pDevice, ID3D11DeviceContext* pDevice
 
 void CRenderObject::SetTexture(string TagName)
 {
-	//Prototype_Component_Texture_Sky ../Bin/Resources/Textures/SkyBox/Sky004.dds
+	wstring TempName(TagName.begin(), TagName.end());
+	const _tchar* NewTagName = TempName.c_str();
+
 	//	For.Com_Texture
-	//if (FAILED(__super::Add_Component(
-	//	m_iCurrentLevel,
-	//	TEXT("Prototype_Component_Texture_UI_Coin"),
-	//	TEXT("Com_Texture"),
-	//	(CComponent**)&m_pTextureCom)))
-	//	return E_FAIL;
+	Add_Component(
+		0,
+		NewTagName,
+		TEXT("Com_Texture"),
+		(CComponent**)&m_pTextureCom);
 }
 
 void CRenderObject::SetTransform(_float4x4 Transform)
@@ -33,9 +34,6 @@ void CRenderObject::SetTransform(_float4x4 Transform)
 	//m_pTransform->Set_WorldMatrix(Transform);
 }
 
-// 기존 CTT 등에서는 각 게임오브젝트들의 LateTick에서 	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_PRIORITY, this); 추가해서
-// Renderer의 각 Render_Priortity 등의 함수에서 그 렌더러 그룹의 오브젝트들의 Render 함수를 호출하는 식이었음
-// 이 부분을 어떻게 해야할지 고민해야함!
 HRESULT CRenderObject::Render()
 {
 	if (nullptr == m_pVIBufferCom)
@@ -58,7 +56,7 @@ void CRenderObject::Add_RenderGroup(AGameObject* pRenderObject)
 	m_pTransform->Scaled(XMVectorSet(m_fSizeX, m_fSizeY, 1.f, 0.0f));
 	m_pTransform->Set_State(CTransform::STATE_POSITION, XMVectorSet(m_fX, m_fY, 0.f, 1.f));
 
-	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_PRIORITY, pRenderObject);
+	m_pRendererCom->Add_RenderGroup(m_RenderType, pRenderObject);
 }
 
 void CRenderObject::SetCoord_Size(_float fX, _float fY, _float fSizeX, _float fSizeY)
@@ -69,6 +67,11 @@ void CRenderObject::SetCoord_Size(_float fX, _float fY, _float fSizeX, _float fS
 	m_fSizeY = fSizeY;
 
 	XMStoreFloat4x4(&m_ProjMatrix, XMMatrixTranspose(XMMatrixOrthographicLH(1280.f, 640.f, 0.f, 1.f)));
+}
+
+void CRenderObject::SetRenderType(CRenderer::RENDERGROUP eType)
+{
+	m_RenderType = eType;
 }
 
 HRESULT CRenderObject::NativeConstruct(string TextureKey, _float4x4 Transform)
@@ -113,15 +116,6 @@ HRESULT CRenderObject::SetUp_Components()
 		TEXT("Prototype_Component_Transform"),
 		TEXT("Com_Transform"),
 		(CComponent**)&m_pTransform)))
-		return E_FAIL;
-
-	// temp
-	//	For.Com_Texture
-	if (FAILED(Add_Component(
-		0,
-		TEXT("Prototype_Component_Texture_Default"),
-		TEXT("Com_Texture"),
-		(CComponent**)&m_pTextureCom)))
 		return E_FAIL;
 
 	return S_OK;

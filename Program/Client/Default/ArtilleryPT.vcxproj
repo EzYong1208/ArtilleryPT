@@ -116,6 +116,12 @@
       <AdditionalDependencies>Engine.lib;d3d11.lib;d3dcompiler.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>../../Engine/ThirdPartyLib/;../../Engine/Bin/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <FxCompile>
+      <ShaderType>Effect</ShaderType>
+    </FxCompile>
+    <FxCompile>
+      <ShaderModel>5.0</ShaderModel>
+    </FxCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -135,6 +141,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\MainApp.h" />
+    <ClInclude Include="..\TestingItem.h" />
     <ClInclude Include="..\TestObject.h" />
     <ClInclude Include="ArtilleryPT.h" />
     <ClInclude Include="framework.h" />
@@ -143,6 +150,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\MainApp.cpp" />
+    <ClCompile Include="..\TestingItem.cpp" />
     <ClCompile Include="..\TestObject.cpp" />
     <ClCompile Include="ArtilleryPT.cpp" />
   </ItemGroup>

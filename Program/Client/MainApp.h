@@ -11,6 +11,7 @@ extern HINSTANCE _hInst;
 extern HWND _hWnd;
 
 class TestObject;
+class TestingItem;
 
 enum class MainAppError
 {
@@ -52,4 +53,5 @@ public:
 
 private:
 	unique_ptr<TestObject> _TestObject;
+	unique_ptr<TestingItem> _TestingItem;
 };
