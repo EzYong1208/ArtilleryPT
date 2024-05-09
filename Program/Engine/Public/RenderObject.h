@@ -26,6 +26,7 @@ public:
 	void SetTransform(_float4x4 Transform);
 	HRESULT Render();
 	void Add_RenderGroup(AGameObject* pRenderObject);
+	void SetCoord_Size(_float fX, _float fY, _float fSizeX, _float fSizeY);
 
 private:
 	CShader* m_pShaderCom = nullptr;
@@ -37,6 +38,9 @@ private:
 private:
 	_float4x4	m_ProjMatrix;
 	_float	m_fX, m_fY, m_fSizeX, m_fSizeY;
+
+	map<const _tchar*, CComponent*> m_Components;
+	typedef map<const _tchar*, CComponent*> COMPONENTS;
 
 protected:
 	ID3D11Device* m_pDevice = nullptr;

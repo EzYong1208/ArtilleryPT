@@ -10,12 +10,7 @@ CRenderObject::CRenderObject(ID3D11Device* pDevice, ID3D11DeviceContext* pDevice
 	Safe_AddRef(m_pDeviceContext);
 
 
-	//SetUp_Components();
-	//string TextureKey = "";
-	//_float4x4 Transform;
-	//ZeroMemory(&Transform, sizeof(_float4x4));
-	//SetTexture(TextureKey);
-	//SetTransform(Transform);
+	SetUp_Components();
 }
 
 void CRenderObject::SetTexture(string TagName)
@@ -32,10 +27,10 @@ void CRenderObject::SetTexture(string TagName)
 
 void CRenderObject::SetTransform(_float4x4 Transform)
 {
-	m_pTransform = CTransform::Create(m_pDevice, m_pDeviceContext);
+	//m_pTransform = CTransform::Create(m_pDevice, m_pDeviceContext);
 
 	//m_pTransform->Set_State(CTransform::STATE_POSITION, Transform);
-	m_pTransform->Set_WorldMatrix(Transform);
+	//m_pTransform->Set_WorldMatrix(Transform);
 }
 
 // 기존 CTT 등에서는 각 게임오브젝트들의 LateTick에서 	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_PRIORITY, this); 추가해서
@@ -60,7 +55,20 @@ HRESULT CRenderObject::Render()
 
 void CRenderObject::Add_RenderGroup(AGameObject* pRenderObject)
 {
+	m_pTransform->Scaled(XMVectorSet(m_fSizeX, m_fSizeY, 1.f, 0.0f));
+	m_pTransform->Set_State(CTransform::STATE_POSITION, XMVectorSet(m_fX, m_fY, 0.f, 1.f));
+
 	m_pRendererCom->Add_RenderGroup(CRenderer::RENDER_PRIORITY, pRenderObject);
+}
+
+void CRenderObject::SetCoord_Size(_float fX, _float fY, _float fSizeX, _float fSizeY)
+{
+	m_fX = fX;
+	m_fY = fY;
+	m_fSizeX = fSizeX;
+	m_fSizeY = fSizeY;
+
+	XMStoreFloat4x4(&m_ProjMatrix, XMMatrixTranspose(XMMatrixOrthographicLH(1280.f, 640.f, 0.f, 1.f)));
 }
 
 HRESULT CRenderObject::NativeConstruct(string TextureKey, _float4x4 Transform)
@@ -107,6 +115,15 @@ HRESULT CRenderObject::SetUp_Components()
 		(CComponent**)&m_pTransform)))
 		return E_FAIL;
 
+	// temp
+	//	For.Com_Texture
+	if (FAILED(Add_Component(
+		0,
+		TEXT("Prototype_Component_Texture_Default"),
+		TEXT("Com_Texture"),
+		(CComponent**)&m_pTextureCom)))
+		return E_FAIL;
+
 	return S_OK;
 }
 
@@ -118,6 +135,8 @@ HRESULT CRenderObject::Add_Component(_uint iLevelIndex, const _tchar* pPrototype
 
 	if (nullptr == pComponent)
 		return E_FAIL;
+
+	m_Components.emplace(pComponentTag, pComponent);
 
 	*ppOut = pComponent;
 
@@ -146,11 +165,16 @@ CRenderObject* CRenderObject::Create(ID3D11Device* pDevice, ID3D11DeviceContext*
 
 void CRenderObject::Free()
 {
-	//Safe_Release(m_pRendererCom);
-	//Safe_Release(m_pShaderCom);
-	//Safe_Release(m_pVIBufferCom);
-	//Safe_Release(m_pTransform);
-
 	Safe_Release(m_pDeviceContext);
 	Safe_Release(m_pDevice);
+
+	for (auto& Pair : m_Components)
+		Safe_Release(Pair.second);
+	m_Components.clear();
+
+	Safe_Release(m_pRendererCom);
+	Safe_Release(m_pShaderCom);
+	Safe_Release(m_pVIBufferCom);
+	Safe_Release(m_pTransform);
+	Safe_Release(m_pTextureCom);
 }

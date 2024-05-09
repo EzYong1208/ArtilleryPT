@@ -99,6 +99,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
             pMainApp->Tick(deltaTime);
             pMainApp->LateTick();
+            pMainApp->Render();
         }
     }
 

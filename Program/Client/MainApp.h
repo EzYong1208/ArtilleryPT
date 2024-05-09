@@ -37,6 +37,7 @@ public:
 private:
 	//	처음 레벨을 뭐로 할지 정함
 	void Open_Level();
+	void Ready_Prototype();
 
 private:
 	ID3D11Device* _Device = nullptr;
