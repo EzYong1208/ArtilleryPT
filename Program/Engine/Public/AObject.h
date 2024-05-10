@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Engine_Defines.h"
-#include "RenderObject.h"
 
 BEGIN(Engine)
 

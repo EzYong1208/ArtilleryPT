@@ -5,6 +5,7 @@
 BEGIN(Engine)
 class CGameInstance;
 class CRenderer;
+class AGameObjectManager;
 END
 
 extern HINSTANCE _hInst;
@@ -54,4 +55,6 @@ public:
 private:
 	unique_ptr<TestObject> _TestObject;
 	unique_ptr<TestingItem> _TestingItem;
+	
+	unique_ptr<AGameObjectManager> _AGameObjectManager;
 };

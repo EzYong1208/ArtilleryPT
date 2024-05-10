@@ -18,6 +18,7 @@ CGameInstance::CGameInstance()
 	Safe_AddRef(m_pComponent_Manager);
 
 	_AResourceManager = make_unique<AResourceManager>();
+	//_AGameObjectManager = make_unique<AGameObjectManager>();
 }
 
 HRESULT CGameInstance::Initialize_Engine(HINSTANCE hInstance, _uint iNumLevels, const CGraphic_Device::GRAPHICDESC & GraphicDesc, ID3D11Device ** ppDeviceOut, ID3D11DeviceContext ** ppDeviceContextOut)
@@ -45,7 +46,6 @@ HRESULT CGameInstance::Initialize_Engine(HINSTANCE hInstance, _uint iNumLevels, 
 	//_float4x4 Transform;
 	//ZeroMemory(&Transform, sizeof(_float4x4));
 	//CRenderObject* pRenderObject = CRenderObject::Create(*ppDeviceOut, *ppDeviceContextOut, TextureKey, Transform);
-
 
 	return S_OK;
 }

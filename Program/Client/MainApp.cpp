@@ -2,6 +2,7 @@
 #include "GameInstance.h"
 #include "TestObject.h"
 #include "TestingItem.h"
+#include "AGameObjectManager.h"
 
 MainApp::MainApp()
 	: _GameInstance(CGameInstance::GetInstance())
@@ -28,22 +29,34 @@ MainAppError MainApp::NativeConstruct()
 
 	Ready_Prototype();
 
-	_TestObject = make_unique<TestObject>();
-	_TestingItem = make_unique<TestingItem>();
+	// 이 부분은 다른 곳에서 이쁘게 구현하고 싶다
+	{
+		_TestObject = make_unique<TestObject>();
+		_TestingItem = make_unique<TestingItem>();
+
+		_AGameObjectManager = make_unique<AGameObjectManager>();
+
+		unique_ptr<TestObject> TempTestObject = make_unique<TestObject>();
+		TempTestObject->SetCoord(300.f, 100.f, 300.f, 300.f);
+		_AGameObjectManager->Add_AGameObject("TestObject", 1, move(TempTestObject));
+
+		unique_ptr<TestObject> TempTestObject2 = make_unique<TestObject>();
+		TempTestObject2->SetCoord(0.f, 0.f, 300.f, 300.f);
+		_AGameObjectManager->Add_AGameObject("TestObject", 2, move(TempTestObject2));
+	}
 
 	return MainAppError::Success;
 }
 
 void MainApp::Tick(_double TimeDelta)
 {
-	_TestObject->Tick(TimeDelta);
-	_TestingItem->Tick(TimeDelta);
+	_AGameObjectManager->Tick(TimeDelta);
+
 }
 
 void MainApp::LateTick()
 {
-	_TestObject->LateTick(_TestObject.get());
-	_TestingItem->LateTick(_TestingItem.get());
+	_AGameObjectManager->LateTick();
 }
 
 void MainApp::Render()
@@ -94,17 +107,20 @@ void MainApp::Ready_Prototype()
 		TEXT("Prototype_Component_VIBuffer_Rect"),
 		CVIBuffer_Rect::Create(_Device, _DeviceContext));
 
-	// For.Prototype_Component_Texture_Default
-	_GameInstance->Add_Prototype(
-		0,
-		TEXT("Prototype_Component_Texture_Default"),
-		CTexture::Create(_Device, _DeviceContext, TEXT("../../../Resource/Textures/Hug.png")));
+	// 이 부분은 다른 곳에서 이쁘게 구현하고 싶다
+	{
+		// For.Prototype_Component_Texture_Default
+		_GameInstance->Add_Prototype(
+			0,
+			TEXT("Prototype_Component_Texture_Default"),
+			CTexture::Create(_Device, _DeviceContext, TEXT("../../../Resource/Textures/Hug.png")));
 
-	// For.Prototype_Component_Texture_Background
-	_GameInstance->Add_Prototype(
-		0,
-		TEXT("Prototype_Component_Texture_Background"),
-		CTexture::Create(_Device, _DeviceContext, TEXT("../../../Resource/Textures/Background.png")));
+		// For.Prototype_Component_Texture_Background
+		_GameInstance->Add_Prototype(
+			0,
+			TEXT("Prototype_Component_Texture_Background"),
+			CTexture::Create(_Device, _DeviceContext, TEXT("../../../Resource/Textures/Background.png")));
+	}
 
 	Safe_AddRef(_Renderer);
 }

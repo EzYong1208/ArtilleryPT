@@ -1,7 +1,8 @@
 #pragma once
 
-#include "Engine_Defines.h"
 #include "AObject.h"
+
+BEGIN(Engine)
 
 enum class GameError
 {
@@ -22,3 +23,5 @@ public:
 private:
 	map<string, string> ResourceMap;
 };
+
+END
