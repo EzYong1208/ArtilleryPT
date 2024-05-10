@@ -1,8 +1,7 @@
 #pragma once
 
+#include "Engine_Defines.h"
 #include "AObject.h"
-
-BEGIN(Engine)
 
 enum class GameError
 {
@@ -18,10 +17,8 @@ public:
 	AResourceManager();
 
 public:
-	GameError Add_Prototype_Textures();
+	GameError Add_Textures();
 
 private:
 	map<string, string> ResourceMap;
 };
-
-END

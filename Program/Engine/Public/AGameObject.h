@@ -11,7 +11,6 @@ class AGameObject : public AObject
 public:
 	// TestObject에서 링크 오류가 계속 생겨서 헤더에 생성자 함수를 구현함.
 	AGameObject() 
-		: isDead(false)
 	{
 		CGameInstance* pGameInstance = GET_INSTANCE(CGameInstance);
 
@@ -29,17 +28,9 @@ public:
 public:
 	void SetTexture(string TextureKey);
 	void SetTransform(_float4x4 Transform);
-	void SetAGameObjectDead() {
-		isDead = true;
-	}
-
-	bool isAGameObjectDead() const {
-		return isDead;
-	}
 
 protected:
 	unique_ptr<CRenderObject> _RenderObject;
-	bool isDead;
 };
 
 END

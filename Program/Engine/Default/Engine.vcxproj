@@ -20,7 +20,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Public\AGameObject.h" />
-    <ClInclude Include="..\Public\AGameObjectManager.h" />
     <ClInclude Include="..\Public\AObject.h" />
     <ClInclude Include="..\Public\Base.h" />
     <ClInclude Include="..\public\Cell.h" />
@@ -54,7 +53,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Private\AGameObject.cpp" />
-    <ClCompile Include="..\Private\AGameObjectManager.cpp" />
     <ClCompile Include="..\Private\AObject.cpp" />
     <ClCompile Include="..\Private\Base.cpp" />
     <ClCompile Include="..\private\Cell.cpp" />

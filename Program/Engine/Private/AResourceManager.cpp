@@ -4,7 +4,7 @@ AResourceManager::AResourceManager()
 {
 }
 
-GameError AResourceManager::Add_Prototype_Textures()
+GameError AResourceManager::Add_Textures()
 {
 	string FileName("../../../Resource/TextureList.txt");
 
@@ -24,12 +24,6 @@ GameError AResourceManager::Add_Prototype_Textures()
 		string Path = "../../../Resource/Textures/" + line.substr(line.find(" ") + 1, line.length());
 
 		ResourceMap.emplace(PrototypeTag, Path);
-
-		//if (FAILED(pGameInstance->Add_Prototype(
-		//	LEVEL_TEST,
-		//	PrototypeTag,
-		//	CTexture::Create(m_pDevice, m_pDeviceContext, Path))))
-		//	return E_FAIL;
 	}
 
 	return GameError::Success;

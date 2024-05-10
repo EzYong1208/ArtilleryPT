@@ -5,14 +5,10 @@
 BEGIN(Engine)
 class CGameInstance;
 class CRenderer;
-class AGameObjectManager;
 END
 
 extern HINSTANCE _hInst;
 extern HWND _hWnd;
-
-class TestObject;
-class TestingItem;
 
 enum class MainAppError
 {
@@ -51,10 +47,4 @@ public:
 	//	static 함수이기 때문에 멤버변수를 사용할 수 없다
 	static MainApp* Create();
 	void Release();
-
-private:
-	unique_ptr<TestObject> _TestObject;
-	unique_ptr<TestingItem> _TestingItem;
-	
-	unique_ptr<AGameObjectManager> _AGameObjectManager;
 };

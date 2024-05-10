@@ -175,7 +175,6 @@
     <ClInclude Include="..\Public\AResourceManager.h">
       <Filter>AObject\Manager</Filter>
     </ClInclude>
-    <ClInclude Include="..\Public\AGameObjectManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Private\Base.cpp">
@@ -257,7 +256,6 @@
     <ClCompile Include="..\Private\AResourceManager.cpp">
       <Filter>AObject\Manager</Filter>
     </ClCompile>
-    <ClCompile Include="..\Private\AGameObjectManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="..\Bin\ShaderFiles\Shader_Navigation.hlsl">
